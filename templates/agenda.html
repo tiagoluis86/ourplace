@@ -1,0 +1,34 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+
+<div class="container" style="border-style: solid; border-color: red">
+  <h2>My Schedule</h2>
+    <a href="evento/">
+        <button type="button">New Event</button>
+    </a>
+    <a href="historico/">
+        <button type="button">Events History</button>
+    </a>
+    <a href="/feed/">
+        <button type="button">Main Feed</button>
+    </a>
+    <a href="/profile/">
+        <button type="button">My Profile</button>
+    </a>
+    <ul style="font-size: 18px">
+        {% for evento in eventos %}
+            <li>
+                <div>
+                    {{ evento.titulo }} - {{ evento.get_data_evento }}
+                    ( <a href="evento/?id={{ evento.id }}">Editar</a>
+                    / <a href="evento/delete/{{ evento.id }}/">Excluir</a> )
+
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock %}
