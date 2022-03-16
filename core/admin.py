@@ -10,4 +10,8 @@ class EventoAdmin(admin.ModelAdmin):
 
 admin.site.register(Evento, EventoAdmin)
 
-admin.site.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'last_name', 'birthday', 'about_me')
+    list_filter = ('usuario', 'birthday')
+
+admin.site.register(Profile, ProfileAdmin)

@@ -43,8 +43,17 @@ def profile(request):
 
 @login_required(login_url='/login/')
 def edit_profile(request):
-    usuario = request.user
-    return render(request, 'edit_profile.html')
+    id_profile = request.GET.get('id')
+    info = {}
+    if id_profile:
+        try:
+            info['profile'] = Profile.objects.get(id=id_profile)
+
+        except Exception:
+            raise Http404()
+
+    return render(request, 'edit_profile.html', info)
+
 
 @login_required(login_url='/login/')
 def submit_profile(request):
@@ -65,11 +74,7 @@ def submit_profile(request):
                 profile.save()
 
         else:
-            Profile.objects.create(name=name,
-                                   last_name=last_name,
-                                   birthday=birthday,
-                                   about_me=about_me,
-                                   usuario=usuario)
+            return redirect('/profile/')
 
 
     return redirect('/profile/')

@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<div class="container" style="border-style: solid; border-color: red">
+<div class="container" style="border-style: solid; background-color: #FFFFFF;">
 
 <h2>Event</h2>
 
 <form action="submit" method="POST">{% csrf_token %}
     <label>Title</label>
-    <input type="number" name="id_evento" value="{{ evento.id }}" hidden>
+    <input type="number" name="id_evento" value="{{ evento.id }}">
     <br>
     <input type="text" name="titulo" size="23" value="{{ evento.titulo }}">
     <br>

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container" style="border-style: solid; border-color: red">
+<div class="container" style="border-style: solid; background-color: #FFFFFF;">
   <h2>Edit Profile</h2>
 
     <a href="/feed/">
@@ -13,11 +13,13 @@
     </a>
 </div>
 
-<div class="container" style="border-style: solid; border-color: red">
+<div class="container" style="margin-bottom: 30px"> </div>
+
+<div class="container" style="border-style: solid; background-color: #FFFFFF;">
 
     <form action="submit" method="POST">{% csrf_token %}
     <label>Name</label>
-    <input type="number" name="id_profile" value="{{ profile.id }}" hidden>
+    <input type="number" name="id_profile" value="{{ profile.id }}">
     <br>
     <input type="text" name="name" value="{{ profile.name }}">
     <br>
@@ -27,7 +29,7 @@
     <br>
     <label>Birthday</label>
     <br>
-    <input type="datetime-local" name="last_name" value="{{ profile.birthday }}">
+    <input type="datetime-local" name="birthday" value="{{ profile.birthday }}">
     <br>
     <label>Description</label>
     <br>

@@ -2,11 +2,14 @@
 
 {% block content %}
 
-<div class="container" style="border-style: solid; border-color: red">
+<div class="container" style="border-style: solid; background-color: #FFFFFF;">
 {% for profile in profiles %}
-  <h2>Hello {{ profile.name }}</h2>
+  <h2>{{ profile.name }} {{ profile.last_name }}</h2>
 {% endfor %}
     <div class="container">
+        <a href="/">
+            <button type="button">My Album</button>
+        </a>
         <a href="/agenda/">
             <button type="button">My Schedule</button>
         </a>
@@ -18,24 +21,21 @@
 
 <div class="container" style="margin-bottom: 30px"> </div>
 
-<div class="container" style="border-style: solid; border-color: red">
-<h3>My Profile</h3>
+<div class="container" style="border-style: solid; background-color: #FFFFFF;">
+
 
 <div class="row">
 
     <div class="col-9">
         {% for profile in profiles %}
-            <p>{{ profile.name }} {{ profile.last_name }}</p>
-            <p>Birthday: {{ profile.birthday }} Last profile update: {{ profile.member_since }} User: {{ profile.usuario}}</p>
+            <h4>Intro</h4>
+            <p>Birthday: {{ profile.birthday }}
+            <p>Last profile update: {{ profile.member_since }}</p>
+            <p>User: {{ profile.usuario}}</p>
             <p>About me: {{ profile.about_me }}</p>
         {% endfor %}
     </div>
-    <div class="col-5">
-        <a href="/">My Communities</a>
-    </div>
-    <div class="col-5">
-        <a href="/">My Album</a>
-    </div>
+
 
 </div>
 </div>

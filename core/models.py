@@ -31,6 +31,7 @@ class Evento(models.Model):
 
 
 class Profile(models.Model):
+    id = models.BigIntegerField(primary_key=True)
     name = models.CharField(max_length=100, verbose_name='Nome')
     last_name = models.CharField(max_length=100, verbose_name='Sobrenome')
     about_me = models.TextField(blank=True, null=True, verbose_name='Sobre mim')
@@ -44,3 +45,8 @@ class Profile(models.Model):
     def __str__(self):
         return self.name
 
+    def get_birthday(self):
+        return self.birthday.strftime('%d/%m/%Y %H:%M Hrs')
+
+    def get_member_since(self):
+        return self.member_since.strftime('%Y-%m-%dT%H:%M')
