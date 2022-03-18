@@ -8,7 +8,7 @@
 
 <form action="submit" method="POST">{% csrf_token %}
     <label>Title</label>
-    <input type="number" name="id_evento" value="{{ evento.id }}">
+    <input type="number" name="id_evento" value="{{ evento.id }}"hidden>
     <br>
     <input type="text" name="titulo" size="23" value="{{ evento.titulo }}">
     <br>

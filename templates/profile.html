@@ -29,13 +29,41 @@
     <div class="col-9">
         {% for profile in profiles %}
             <h4>Intro</h4>
-            <p>Birthday: {{ profile.birthday }}
+
+            <p>Birthday: {{ profile.birthday }}</p>
             <p>Last profile update: {{ profile.member_since }}</p>
             <p>User: {{ profile.usuario}}</p>
             <p>About me: {{ profile.about_me }}</p>
         {% endfor %}
     </div>
 
+
+    <div class="container" style="margin-bottom: 30px"> </div>
+
+<div class="container" style="border-style: solid; background-color: #FFFFFF;">
+
+    <form action="submit" method="POST">{% csrf_token %}
+
+    <label>Post</label>
+    <br>
+    <textarea name="user_post" rows="5" cols="80">{{ userfeed.user_post }}</textarea>
+    <br><br>
+    <button type="submit">Save</button>
+    <a href="/">
+    <button type="button">Cancel</button>
+    </a>
+    </form>
+</div>
+<div class="container" style="border-style: solid; background-color: #FFFFFF;">
+
+    {% for postagem in postagens %}
+        <div class="container" style="border-style: solid; background-color: #FFFFFF;">
+            <p> Post: {{ userfeed.user_post }} </p>
+            <p> Posted in: {{ userfeed.date_post }} </p>
+            <p> By: {{ userfeed.usuario }} </p>
+        </div>
+    {% endfor %}
+</div>
 
 </div>
 </div>

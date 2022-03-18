@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from core.models import Evento, Profile
+from core.models import Evento, Profile, UserFeed
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -37,9 +37,27 @@ def submit_login(request):
 def profile(request):
     usuario = request.user
     data_atual = datetime.now() - timedelta(hours=1)
+    postagem = UserFeed.objects.filter(usuario=usuario)
     profile = Profile.objects.filter(usuario=usuario)
-    info = {'profiles':profile}
+
+    info = {'postagens':postagem, 'profiles':profile}
+
     return render(request, 'profile.html', info)
+
+@login_required(login_url='/login/')
+def submit_post(request):
+    if request.POST:
+        user_post = request.POST.get('user_post')
+        date_post = request.POST.get('date_post')
+        usuario = request.user
+
+        id_userfeed = request.POST.get('id_userfeed')
+
+        UserFeed.objects.create(user_post=user_post,
+                                  date_post = date_post,
+                                    usuario = usuario)
+
+    return redirect('/profile/')
 
 @login_required(login_url='/login/')
 def edit_profile(request):
@@ -63,6 +81,7 @@ def submit_profile(request):
         birthday = request.POST.get('birthday')
         about_me = request.POST.get('about_me')
         usuario = request.user
+
         id_profile = request.POST.get('id_profile')
         if id_profile:
             profile = Profile.objects.get(id=id_profile)
@@ -93,7 +112,13 @@ def communities(request):
 @login_required(login_url='/login/')
 def feed(request):
     usuario = request.user
-    return render(request, 'feed.html')
+
+    postagem = UserFeed.objects.filter(usuario=usuario)
+
+    info = {'postagens': postagem}
+
+    return render(request, 'feed.html', info)
+
 
 @login_required(login_url='/login/')
 def lista_eventos(request):

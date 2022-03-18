@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Evento, Profile
+from core.models import Evento, Profile, UserFeed
 
 # Register your models here.
 
@@ -15,3 +15,9 @@ class ProfileAdmin(admin.ModelAdmin):
     list_filter = ('usuario', 'birthday')
 
 admin.site.register(Profile, ProfileAdmin)
+
+class UserFeedAdmin(admin.ModelAdmin):
+    list_display = ('user_post', 'date_post', 'usuario')
+    list_filter = ('date_post', 'usuario')
+
+admin.site.register(UserFeed, UserFeedAdmin)

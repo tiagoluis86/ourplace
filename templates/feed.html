@@ -14,4 +14,16 @@
   <p>Friends activities are listed here. You don't have any friends yet :(.</p>
 </div>
 
+
+<div class="container" style="border-style: solid; background-color: #FFFFFF;">
+
+    {% for postagem in postagens %}
+        <div class="container" style="border-style: solid; background-color: #FFFFFF;">
+            <p> Post: {{ userfeed.user_post }} </p>
+            <p> Posted in: {{ userfeed.date_post }} </p>
+            <p> By: {{ userfeed.usuario }} </p>
+        </div>
+    {% endfor %}
+</div>
+
 {% endblock %}

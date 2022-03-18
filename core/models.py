@@ -50,3 +50,18 @@ class Profile(models.Model):
 
     def get_member_since(self):
         return self.member_since.strftime('%Y-%m-%dT%H:%M')
+
+class UserFeed(models.Model):
+    user_post = models.TextField(blank=True, null=True, verbose_name='post')
+    date_post = models.DateTimeField(auto_now=True, verbose_name='posted at')
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'userfeed'
+
+class MainFeed(models.Model):
+    user_post = models.ForeignKey(UserFeed, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'mainfeed'

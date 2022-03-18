@@ -35,5 +35,7 @@ urlpatterns = [
     path('edit_profile/submit', views.submit_profile),
     path('feed/', views.feed),
     path('friends/', views.friends),
-    path('communities/', views.communities)
+    path('communities/', views.communities),
+    path('profile/submit', views.submit_post)
+
 ]
