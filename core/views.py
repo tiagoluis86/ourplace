@@ -36,9 +36,9 @@ def submit_login(request):
 @login_required(login_url='/login/')
 def profile(request):
     usuario = request.user
-    data_atual = datetime.now() - timedelta(hours=1)
-    postagem = UserFeed.objects.filter(usuario=usuario)
+
     profile = Profile.objects.filter(usuario=usuario)
+    postagem = UserFeed.objects.filter(usuario=usuario)
 
     info = {'postagens':postagem, 'profiles':profile}
 
@@ -56,6 +56,7 @@ def submit_post(request):
         UserFeed.objects.create(user_post=user_post,
                                   date_post = date_post,
                                     usuario = usuario)
+
 
     return redirect('/profile/')
 

@@ -58,9 +58,9 @@
 
     {% for postagem in postagens %}
         <div class="container" style="border-style: solid; background-color: #FFFFFF;">
-            <p> Post: {{ userfeed.user_post }} </p>
-            <p> Posted in: {{ userfeed.date_post }} </p>
-            <p> By: {{ userfeed.usuario }} </p>
+            <p>Post: {{ userfeed.user_post }} </p>
+            <p>Posted at:{{ userfeed.date_post }} </p>
+            <p>By: {{ userfeed.usuario }} </p>
         </div>
     {% endfor %}
 </div>
